@@ -19,12 +19,21 @@ addTaskButton.addEventListener('click', () => {
     li.appendChild(span);
     inputTask.value = '';
     addTaskButton.disabled = true;
+    saveTask();
 })
+
+taskList.innerHTML = localStorage.getItem('data');
 
 taskList.addEventListener('click', event => {
     if (event.target.tagName === 'LI') {
         event.target.classList.toggle('checked');
+        saveTask();
     } else if (event.target.tagName === 'SPAN') {
         event.target.parentElement.remove();
+        saveTask();
     }
 })
+
+function saveTask() {
+    localStorage.setItem('data', taskList.innerHTML);
+}
