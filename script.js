@@ -14,6 +14,17 @@ addTaskButton.addEventListener('click', () => {
     let li = document.createElement('li');
     li.innerHTML = inputTask.value;
     taskList.appendChild(li);
+    let span = document.createElement('span');
+    span.innerHTML = '\u00d7';
+    li.appendChild(span);
     inputTask.value = '';
     addTaskButton.disabled = true;
+})
+
+taskList.addEventListener('click', event => {
+    if (event.target.tagName === 'LI') {
+        event.target.classList.toggle('checked');
+    } else if (event.target.tagName === 'SPAN') {
+        event.target.parentElement.remove();
+    }
 })

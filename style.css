@@ -9,6 +9,7 @@
     --black: #263238;
     --light-black: #607D8B;
     --gray: #B0BEC5;
+    --light-gray: #CFD8DC;
     --white: #ECEFF1;
     --primary-color: #FF8A65;
     --primary-color-darker: #FF7043;
@@ -132,4 +133,20 @@ ul li.checked::before {
     color: var(--white);
     border: none;
     background-color: var(--primary-color);
+}
+
+ul li span {
+    position: absolute;
+    right: 10px;
+    color: var(--black);
+    font-size: 18px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    user-select: none;
+}
+
+ul li span:hover {
+    border-radius: 50%;
+    background-color: var(--light-gray);
 }
