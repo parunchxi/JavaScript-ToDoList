@@ -2,7 +2,7 @@ const inputTask = document.querySelector('#new_task');
 const addTaskButton = document.querySelector('#add');
 const taskList = document.querySelector('ul');
 
-inputTask.addEventListener('keydown', () => {
+inputTask.addEventListener('input', (event) => {
     if (inputTask.value !== '') {
         addTaskButton.disabled = false;
     } else {
@@ -15,4 +15,5 @@ addTaskButton.addEventListener('click', () => {
     li.innerHTML = inputTask.value;
     taskList.appendChild(li);
     inputTask.value = '';
+    addTaskButton.disabled = true;
 })
