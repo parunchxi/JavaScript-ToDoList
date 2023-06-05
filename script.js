@@ -1,7 +1,26 @@
 const inputTask = document.querySelector('#new_task');
 const addTaskButton = document.querySelector('#add');
 const taskList = document.querySelector('ul');
+let taskArray = [];
 
+// Get task form localStorage
+data = JSON.parse(localStorage.getItem('taskData'));
+if (data !== null) {
+    data.forEach((item) => {
+        taskArray.push(item);
+    })
+}
+
+// Save task in localStorage
+function saveTask() {
+    if (taskArray.length !== 0) {
+        localStorage.setItem('taskData', JSON.stringify(taskArray));
+    } else if (taskArray.length === 0) {
+        localStorage.removeItem('taskData');
+    }
+}
+
+// Enable add button
 inputTask.addEventListener('input', (event) => {
     if (inputTask.value !== '') {
         addTaskButton.disabled = false;
@@ -10,30 +29,38 @@ inputTask.addEventListener('input', (event) => {
     }
 })
 
-addTaskButton.addEventListener('click', () => {
-    let li = document.createElement('li');
-    li.innerHTML = inputTask.value;
-    taskList.appendChild(li);
-    let span = document.createElement('span');
-    span.innerHTML = '\u00d7';
-    li.appendChild(span);
-    inputTask.value = '';
-    addTaskButton.disabled = true;
+// Add new task
+addTaskButton.addEventListener('click', addNewTask);
+function addNewTask() {
+    taskArray.unshift(inputTask.value);
+    showTask();
     saveTask();
-})
+    addTaskButton.disabled = true;
+}
 
-taskList.innerHTML = localStorage.getItem('data');
+// Show task
+showTask();
+function showTask() {
+    taskList.innerHTML = '';
+    taskArray.forEach(item => {
+        let li = document.createElement('li');
+        li.id = item;
+        li.innerHTML = item;
+        taskList.appendChild(li);
+        let span = document.createElement('span');
+        span.innerHTML = '\u00d7';
+        li.appendChild(span);
+        inputTask.value = '';
+    })
+}
 
+// Check and Delete task
 taskList.addEventListener('click', event => {
     if (event.target.tagName === 'LI') {
         event.target.classList.toggle('checked');
-        saveTask();
     } else if (event.target.tagName === 'SPAN') {
-        event.target.parentElement.remove();
+        taskArray = taskArray.filter(item => item !== event.target.parentElement.id);
+        showTask();
         saveTask();
     }
 })
-
-function saveTask() {
-    localStorage.setItem('data', taskList.innerHTML);
-}

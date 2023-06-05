@@ -89,7 +89,7 @@ h1 {
 
 .add-task-input button:disabled {
     opacity: .5;
-    cursor: default;
+    cursor: not-allowed;
 }
 
 .add-task-input button:disabled:hover {
