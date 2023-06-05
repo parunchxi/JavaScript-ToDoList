@@ -31,6 +31,12 @@ inputTask.addEventListener('input', (event) => {
 
 // Add new task
 addTaskButton.addEventListener('click', addNewTask);
+inputTask.addEventListener('keydown', (key) => {
+    if (key.code === "Enter") {
+        addNewTask();
+    }
+});
+
 function addNewTask() {
     taskArray.unshift(inputTask.value);
     showTask();
