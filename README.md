@@ -2,15 +2,15 @@
 
 This ToDoList has been developed using HTML, CSS, and Vanilla JavaScript.
 
- ## Features
+## Features
   - Add new task.
   - Delete task.
   - Check mark the completed task.
   - Save task data in LocalStorage.
   - Switch the theme from light to dark (or dark to light).
 
- ## Preview
+## Preview
 ![To-Do List Preview](img/Preview.png)
 
- ## Credit
+## Credit
 Icon: [Remix Icon](https://remixicon.com/)
