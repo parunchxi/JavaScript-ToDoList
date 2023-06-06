@@ -12,4 +12,5 @@ This ToDoList has been developed using HTML, CSS, and Vanilla JavaScript.
  ## Preview
 ![To-Do List Preview](img/Preview.png)
 
+ ## Credit
 Icon: [Remix Icon](https://remixicon.com/)
