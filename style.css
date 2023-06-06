@@ -6,46 +6,93 @@
 }
 
 :root {
-    --black: #263238;
-    --light-black: #607D8B;
-    --gray: #B0BEC5;
-    --light-gray: #CFD8DC;
-    --white: #ECEFF1;
     --primary-color: #FF8A65;
-    --primary-color-darker: #FF7043;
+    --secondary-color: #FF7043;
+    --bg: #F5F7F8;
+    --card-bg: #ECEFF1;
+    --input-bg: #DBE2E5;
+    --primary-text-color: #263238;
+    --secondary-text-color: #607D8B;
+    --button-text-color: #F5F7F8;
+    --hover: #DBE2E5;
+}
+
+.dark-mode {
+    --primary-color: #FF7043;
+    --secondary-color: #FF8A65;
+    --bg: #13191C;
+    --card-bg: #263238;
+    --input-bg: #1C252A;
+    --primary-text-color: #ECEFF1;
+    --secondary-text-color: #90A4AE;
+    --button-text-color: #F5F7F8;
+    --hover: #3E515A;
 }
 
 ::selection {
     background-color: var(--primary-color);
-    color: var(--white);
+    color: var(--button-text-color);
 }
 
 ::placeholder {
-    color: var(--gray);
+    color: var(--secondary-text-color);
     user-select: none;
 }
 
 body {
-    background-color: var(--white);
+    background-color: var(--bg);
+    overflow: auto;
 }
 
+/* Navbar */
+nav {
+    height: 75px;
+    padding: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav h1 {
+    font-size: 2rem;
+    color: var(--primary-text-color);
+    align-self: center;
+}
+
+nav .link-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav .link-group a {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--primary-text-color);
+}
+
+nav .link-group a:hover {
+    color: var(--secondary-text-color);
+}
+
+/* Main */
 .container {
-    width: 100vw;
-    min-height: 100vh;
-    padding: 10px;
+    width: 100%;
 }
 
 .card {
     max-width: 600px;
-    margin: 100px auto;
+    margin: auto;
     padding: 60px 50px 90px;
     border-radius: 10px;
-    border: 1px solid var(--gray);
+    background-color: var(--card-bg);
 }
 
 h1 {
     font-size: 3rem;
-    color: var(--black);
+    color: var(--primary-text-color);
     margin-bottom: 20px;
 }
 
@@ -53,7 +100,7 @@ h1 {
     width: 100%;
     height: 50px;
     border-radius: 10px;
-    border: 1px solid var(--gray);
+    background-color: var(--input-bg);
     margin: 20px 0;
     display: flex;
     align-items: center;
@@ -67,7 +114,7 @@ h1 {
     height: 100%;
     padding: 0 15px;
     font-size: 16px;
-    color: var(--black);
+    color: var(--primary-text-color);
     background-color: transparent;
 }
 
@@ -75,16 +122,17 @@ h1 {
     border: none;
     outline: none;
     font-size: 16px;
-    color: var(--white);
+    color: var(--button-text-color);
     height: 100%;
     width: 15%;
     border-radius: 9px;
     background-color: var(--primary-color);
+    user-select: none;
     cursor: pointer;
 }
 
 .add-task-input button:hover {
-    background-color: var(--primary-color-darker);
+    background-color: var(--secondary-color);
 }
 
 .add-task-input button:disabled {
@@ -105,7 +153,7 @@ ul {
 }
 
 ul li {
-    color: var(--black);
+    color: var(--primary-text-color);
     font-size: 16px;
     padding-left: 25px;
     cursor: pointer;
@@ -118,19 +166,19 @@ ul li::before {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 1px solid var(--gray);
+    border: 1px solid var(--secondary-text-color);
 }
 
 ul li.checked {
     text-decoration: line-through;
-    color: var(--light-black);
+    color: var(--secondary-text-color);
 }
 
 ul li.checked::before {
     content: '\2714';
     text-align: center;
     font-size: 12px;
-    color: var(--white);
+    color: var(--primary-text-color);
     border: none;
     background-color: var(--primary-color);
 }
@@ -138,7 +186,7 @@ ul li.checked::before {
 ul li span {
     position: absolute;
     right: 10px;
-    color: var(--black);
+    color: var(--primary-text-color);
     font-size: 18px;
     text-align: center;
     width: 20px;
@@ -148,5 +196,5 @@ ul li span {
 
 ul li span:hover {
     border-radius: 50%;
-    background-color: var(--light-gray);
+    background-color: var(--hover);
 }

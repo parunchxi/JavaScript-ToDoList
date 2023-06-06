@@ -70,3 +70,14 @@ taskList.addEventListener('click', event => {
         saveTask();
     }
 })
+
+// Change Theme
+const changeTheme = document.getElementById('change_theme');
+changeTheme.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.className === 'dark-mode') {
+        changeTheme.innerHTML = '<i class="ri-moon-fill"></i>';
+    } else {
+        changeTheme.innerHTML = '<i class="ri-sun-fill"></i>';
+    }
+})
