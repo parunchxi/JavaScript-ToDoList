@@ -85,13 +85,13 @@ changeTheme.addEventListener('click', () => {
 function setDarkMode() {
     document.body.classList.add('dark-mode');
     changeTheme.innerHTML = '<i class="ri-moon-fill"></i>';
-    saveTeme('darkMode');
+    localStorage.setItem('theme', 'darkMode');
 }
 
 function setLightMode() {
     document.body.classList.remove('dark-mode');
     changeTheme.innerHTML = '<i class="ri-sun-fill"></i>';
-    saveTeme('lightMode');
+    localStorage.removeItem('theme');
 }
 
 // Get Theme
@@ -99,11 +99,6 @@ const theme = localStorage.getItem('theme');
 
 if (theme === 'darkMode') {
     setDarkMode();
-} else if (theme === 'lightMode') {
+} else {
     setLightMode();
-}
-
-// Save Theme
-function saveTeme(theme) {
-    localStorage.setItem('theme', theme);
 }
